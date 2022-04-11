@@ -25,7 +25,7 @@ RUN apt-get update \
     && apt-get install keyboard-configuration \
     && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
-# Fix local problems
+# Fix locale problems
 RUN locale-gen en_US en_US.UTF-8 \
     && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
