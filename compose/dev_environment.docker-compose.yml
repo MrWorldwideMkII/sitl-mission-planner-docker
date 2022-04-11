@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  development:
+    image: dev_base
+    build:
+      context: . 
+      dockerfile: dockerfiles/dev.base.dockerfile
+      args:
+        USER: user
+    container_name: "development"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix

@@ -1,0 +1,1 @@
+docker-compose -f .docker-compose.root.yml -f compose/drones/dev.docker-compose.sitl.yml up

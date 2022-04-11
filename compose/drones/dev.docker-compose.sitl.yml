@@ -1,0 +1,39 @@
+version: "3.3"
+services:
+  mission_planner:
+    image: mission_planner
+    build:
+      context: . 
+      dockerfile: dockerfiles/drones/mission_planner.dockerfile
+    container_name: "mission_planner"
+    environment:
+      - DISPLAY=$DISPLAY
+    privileged: true
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    networks:
+      - dev
+
+  sitl:
+    image: sim_vehicle
+    build:
+      context: . 
+      dockerfile: dockerfiles/drones/sim_vehicle.dockerfile
+    container_name: "sim_vehicle"
+    stdin_open: true
+    tty: true
+    privileged: true
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    command: ["-v", "ArduCopter", "--console", "--map", "--out", "udp:mission_planner:5555"]
+    networks:
+      - dev
+    ports:
+      # Not entirely sure this port has to be exposed.
+      - 5762:5762
+
+networks:
+  dev:
+    driver: bridge
