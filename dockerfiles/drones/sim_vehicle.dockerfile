@@ -14,7 +14,7 @@ WORKDIR /ardupilot
 USER ${USER}
 RUN Tools/environment_install/install-prereqs-ubuntu.sh -y
 
-RUN pip install \ 
+RUN pip install \
         empy \
         future \
         mavproxy \

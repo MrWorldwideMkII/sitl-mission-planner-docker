@@ -3,7 +3,7 @@ services:
   mission_planner:
     image: mission_planner
     build:
-      context: . 
+      context: .
       dockerfile: dockerfiles/drones/mission_planner.dockerfile
     container_name: "mission_planner"
     environment:
@@ -17,7 +17,7 @@ services:
   sitl:
     image: sim_vehicle
     build:
-      context: . 
+      context: .
       dockerfile: dockerfiles/drones/sim_vehicle.dockerfile
     container_name: "sim_vehicle"
     stdin_open: true

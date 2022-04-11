@@ -3,7 +3,7 @@ services:
   development:
     image: dev_base
     build:
-      context: . 
+      context: .
       dockerfile: dockerfiles/dev.base.dockerfile
       args:
         USER: user

@@ -4,17 +4,17 @@ FROM ubuntu:20.04
 ARG USER=user
 
 # Needed for non interactive install
-ENV DEBIAN_FRONTEND=noninteractive 
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN useradd -U -m ${USER} && \
     usermod -G users ${USER}
 
 # Installing system wide software and enable sudo for the user
 RUN apt-get update \
-    && apt-get upgrade -y \ 
+    && apt-get upgrade -y \
     && apt-get install -y \
         sudo \
-        git \ 
+        git \
         python3 \
         python-is-python3 \
         python3-pip \
@@ -24,6 +24,14 @@ RUN apt-get update \
         locales tzdata \
     && apt-get install keyboard-configuration \
     && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+
+# Fix local problems
+RUN locale-gen en_US en_US.UTF-8 \
+    && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 ENV USER=${USER}
 
