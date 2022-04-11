@@ -10,9 +10,9 @@ RUN useradd -U -m ${USER} && \
     usermod -G users ${USER}
 
 # Installing system wide software and enable sudo for the user
-RUN apt-get update && \
-    apt-get upgrade -y && \ 
-    apt-get install -y \
+RUN apt-get update \
+    && apt-get upgrade -y \ 
+    && apt-get install -y \
         sudo \
         git \ 
         python3 \
@@ -21,9 +21,9 @@ RUN apt-get update && \
         zip unzip \
         net-tools \
         iputils-ping \
-        tzdata &&  \
-    apt-get install keyboard-configuration && \
-    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+        locales tzdata \
+    && apt-get install keyboard-configuration \
+    && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
 ENV USER=${USER}
 

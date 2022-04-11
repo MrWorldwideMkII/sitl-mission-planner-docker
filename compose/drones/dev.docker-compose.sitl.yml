@@ -30,9 +30,6 @@ services:
     command: ["-v", "ArduCopter", "--console", "--map", "--out", "udp:mission_planner:5555"]
     networks:
       - dev
-    ports:
-      # Not entirely sure this port has to be exposed.
-      - 5762:5762
 
 networks:
   dev:
