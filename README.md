@@ -1,7 +1,7 @@
 # Instructions 
 1. Build the environments
     ```sh
-    docker-compose -f .docker-compose.root.yml -f compose/dev_environment.docker-compose.yml build
+    docker-compose -f .docker-compose.root.yml -f compose/dev_environment.docker-compose.yml build && \
     docker-compose -f .docker-compose.root.yml -f compose/drones/dev.docker-compose.sitl.yml build
     ```
 1. Run `run_simulation.sh`. It assumes you have docker-compose installed, and built the `dev_env`. 
